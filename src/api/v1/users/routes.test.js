@@ -70,16 +70,16 @@ describe('v1/users', () => {
     done();
   });
 
-  // it('PATCH update user password', async (done) => {
-  //   const user = { name: 'user 1', email: 'user1@test.js', password: '12345678' };
-  //   await User.query().insert(user);
+  it('POST reset password', async (done) => {
+    const user = { name: 'user 1', email: 'user1@test.js', password: '12345678' };
+    const dbUser = await User.query().insert(user);
 
-  //   const payload = { password: user.password, newPassword: '999aaabbb' };
+    const data = { password: '999aaabbb' };
 
-  //   const response = await request.patch(`${endpoint}/resetPassword`).send(payload);
+    const response = await request.post(`${endpoint}/${dbUser.id}/resetPassword`).send(data);
 
-  //   expect(response.status).toBe(200);
+    expect(response.status).toBe(200);
 
-  //   done();
-  // });
+    done();
+  });
 });

@@ -10,6 +10,16 @@ class User extends Model {
     this.password = await bcrypt.hash(this.password, 10);
   }
 
+  async $beforeUpdate() {
+    if (this.password) {
+      this.password = await bcrypt.hash(this.password, 10);
+    }
+  }
+
+  async passwordMatches(unencryptedPassword) {
+    return bcrypt.compare(unencryptedPassword, this.password);
+  }
+
   // TODO $beforeUpdate hook. encrypt password if different
 
   static get jsonSchema() {

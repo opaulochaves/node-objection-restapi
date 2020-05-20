@@ -23,12 +23,24 @@ router.post('/', async (req, res, next) => {
 
 router.patch('/:id', async (req, res, next) => {
   try {
-    const { id } = req.params;
-    const user = await controller.updateUser(id, req.body);
+    const user = await controller.updateUser(req.params.id, req.body);
 
     res.json(omit(user, 'password'));
   } catch (error) {
-    console.log(error);
+    next(error);
+  }
+});
+
+router.post('/:id/resetPassword', async (req, res, next) => {
+  try {
+    const ok = await controller.resetPassword(req.params.id, req.body);
+
+    if (ok) {
+      return res.status(200).json({});
+    }
+
+    return res.status(400).json({ error: 'password reset failed' });
+  } catch (error) {
     next(error);
   }
 });
