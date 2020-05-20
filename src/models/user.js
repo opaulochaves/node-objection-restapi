@@ -1,9 +1,16 @@
+const bcrypt = require('bcrypt');
 const { Model } = require('objection');
 
 class User extends Model {
   static get tableName() {
     return 'users';
   }
+
+  async $beforeInsert() {
+    this.password = await bcrypt.hash(this.password, 10);
+  }
+
+  // TODO $beforeUpdate hook. encrypt password if different
 
   static get jsonSchema() {
     return {
