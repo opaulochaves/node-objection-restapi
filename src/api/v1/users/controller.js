@@ -41,7 +41,9 @@ async function resetPassword(id, { password }) {
       throw new Error('set a different password');
     }
 
-    return await user.$query().patchAndFetchById(id, { password });
+    await user.$query().patchAndFetchById(id, { password });
+
+    return true;
   } catch (error) {
     console.log(error);
     return { error: 'error' };

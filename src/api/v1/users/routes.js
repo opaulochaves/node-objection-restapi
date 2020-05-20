@@ -35,7 +35,7 @@ router.post('/:id/resetPassword', async (req, res, next) => {
   try {
     const ok = await controller.resetPassword(req.params.id, req.body);
 
-    if (ok) {
+    if (ok === true) {
       return res.status(200).json({});
     }
 
