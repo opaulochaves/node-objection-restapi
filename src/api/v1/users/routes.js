@@ -1,12 +1,12 @@
-const express = require('express')
-const controller = require('./controller')
+const express = require('express');
+const controller = require('./controller');
 
-const router = express.Router()
+const router = express.Router();
 
 router.get('/', async (req, res) => {
-  const users = await controller.findUsers()
+  const users = await controller.findUsers();
 
-  res.json(users)
-})
+  res.json(users);
+});
 
-module.exports = router
+module.exports = router;

@@ -1,5 +1,5 @@
-require('dotenv').config()
-const config = require('./src/config')
+require('dotenv').config();
+const config = require('./src/config');
 
 // ref: https://devhints.io/knex
 const options = {
@@ -16,13 +16,13 @@ const options = {
   },
   debug: config.db.debug,
   useNullAsDefault: config.db.client === 'sqlite3',
-}
+};
 
 if (config.db.client !== 'sqlite3') {
   options.pool = {
     min: 2,
     max: 10,
-  }
+  };
 }
 
 const configs = {
@@ -35,6 +35,6 @@ const configs = {
     ...options,
     connection: config.db.url || { filename: 'src/data/prod.sqlite3' },
   },
-}
+};
 
-module.exports = configs[process.env.NODE_ENV]
+module.exports = configs[process.env.NODE_ENV];

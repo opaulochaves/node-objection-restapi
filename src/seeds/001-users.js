@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt')
-const faker = require('faker')
+const bcrypt = require('bcrypt');
+const faker = require('faker');
 
 const users = [
   { name: 'King James', email: 'king@so11os.js', id: '1fc4fd85-2871-4d12-a267-df537a2ea908' },
@@ -11,11 +11,11 @@ const users = [
   name: user.name,
   password: bcrypt.hashSync('12345678', 10),
   avatar: faker.image.avatar(),
-}))
+}));
 
 // will be used for testing purpose later
-module.exports.users = users
+module.exports.users = users;
 
 module.exports.seed = async function (knex) {
-  await knex('users').del().insert(users)
-}
+  await knex('users').del().insert(users);
+};
