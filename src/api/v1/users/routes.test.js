@@ -55,4 +55,31 @@ describe('v1/users', () => {
 
     done();
   });
+
+  it('PATCH update user', async (done) => {
+    const user = { name: 'user 1', email: 'user1@test.js', password: '12345678' };
+    const dbUser = await User.query().insert(user);
+
+    const data = { name: 'user 999' };
+
+    const response = await request.patch(`${endpoint}/${dbUser.id}`).send(data);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('name', 'user 999');
+
+    done();
+  });
+
+  // it('PATCH update user password', async (done) => {
+  //   const user = { name: 'user 1', email: 'user1@test.js', password: '12345678' };
+  //   await User.query().insert(user);
+
+  //   const payload = { password: user.password, newPassword: '999aaabbb' };
+
+  //   const response = await request.patch(`${endpoint}/resetPassword`).send(payload);
+
+  //   expect(response.status).toBe(200);
+
+  //   done();
+  // });
 });

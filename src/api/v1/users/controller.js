@@ -18,7 +18,14 @@ async function createUser({ name, email, password, avatar }) {
   return user;
 }
 
+async function updateUser(id, { name, avatar }) {
+  const updatedUser = await User.query().patchAndFetchById(id, { name, avatar });
+
+  return updatedUser;
+}
+
 module.exports = {
   findUsers,
   createUser,
+  updateUser,
 };
