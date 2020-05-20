@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('./env');
 
 const Knex = require('knex');
 const { Model } = require('objection');

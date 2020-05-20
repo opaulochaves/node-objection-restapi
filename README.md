@@ -97,3 +97,34 @@ Remember whenever you need to change the database structure like adding a field 
 changing its type or creating an index for example, you need to create a migration then
 do the change you want in that new migration file and then run `migrate:latest` which will
 apply those changes in the databse
+
+## Testing
+
+**Create .env.test file**
+
+```sh
+cp .env.example .env.test
+```
+
+open `.env.test` and set `DATABASE_URL` to your test database, `so11os_test`
+
+**Run migrations for test environment**
+
+```sh
+yarn migrate:test
+```
+
+> Whenever you create a new migration run the migrate command for test environment too
+
+**Run seeds for test environment [optional]**
+
+```sh
+yarn seed:run:test
+```
+
+**Run tests**
+
+```sh
+yarn test
+yarn test:watch # run in watch mode
+```

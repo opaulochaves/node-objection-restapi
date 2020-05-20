@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('./src/env');
 const config = require('./src/config');
 
 // ref: https://devhints.io/knex
