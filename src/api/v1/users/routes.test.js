@@ -51,9 +51,7 @@ describe('v1/users', () => {
 
     const response = await request.post(endpoint).send(user);
 
-    expect(response.status).toBe(400);
-    expect(response.body).toHaveProperty('error');
-    expect(response.body.error).toMatch(/email already in use/);
+    expect(response.status).toBe(409);
 
     done();
   });
