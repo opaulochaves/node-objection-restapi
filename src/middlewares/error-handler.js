@@ -10,9 +10,7 @@ const {
   DataError,
 } = require('objection');
 
-// TODO don't send info the client shouldn't see. SQL and other info
-// Simplify this error handling
-// Handler my own errors once they are created
+// TODO custom this default errorHandler copied from the documentation
 module.exports = function errorHandler(err, _req, res, next) {
   if (err.headersSend) {
     return next(err);
