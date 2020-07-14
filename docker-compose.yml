@@ -25,7 +25,7 @@ services:
       - db
     environment:
       - CORS_ORIGIN=http://localhost:3000,http://localhost:3001
-      - DATABASE_URL=postgres://postgres:secret@db:5432/so11os_dev
+      - DATABASE_URL=postgres://postgres:secret@db:5432/apidb_dev
       - DATABASE_DEBUG=false
     ports:
       - "3000:3000"
