@@ -1,5 +1,5 @@
 const supertest = require('supertest');
-const app = require('../../../app');
+const { app, knex } = require('../../../app');
 const User = require('../../../models/user');
 
 const request = supertest(app);
@@ -7,6 +7,10 @@ const request = supertest(app);
 describe('v1/users', () => {
   beforeEach(() => {
     return User.query().truncate();
+  });
+
+  afterAll(async () => {
+    await knex.destroy();
   });
 
   const endpoint = '/v1/users';
