@@ -23,4 +23,4 @@ app.use('/v1/users', usersRoutes);
 
 app.use(errorHandler);
 
-module.exports = app;
+module.exports = { app, knex };
