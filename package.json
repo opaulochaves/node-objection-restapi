@@ -1,9 +1,9 @@
 {
-  "name": "api-so11os",
+  "name": "node-objection-restapi",
   "version": "0.0.1",
   "main": "src/index.js",
-  "description": "API for the so11os application",
-  "repository": "git@github.com:wandersonchaves/api-so11os.git",
+  "description": "REST API to manage personal finances",
+  "repository": "git@github.com:opaulochaves/node-objection-restapi.git",
   "private": true,
   "scripts": {
     "start": "node src/index.js",
@@ -38,7 +38,7 @@
     "supertest": "^4.0.2"
   },
   "dependencies": {
-    "bcrypt": "^4.0.1",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "date-fns": "^2.13.0",
     "dotenv": "^8.2.0",
