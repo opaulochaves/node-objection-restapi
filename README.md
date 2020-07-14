@@ -1,6 +1,8 @@
-# api-so11os
+# node-objection-restapi
 
-##Requirements
+REST API to manage personal finances
+
+## Requirements
 
 - node >= 14
 - yarn
@@ -13,18 +15,16 @@
 Make sure you have node >= 14 in your system. In case not, you can install it with [nvm](https://github.com/nvm-sh/nvm)
 
 ```sh
-$ cd /into/your/workdir
-$ git clone git@github.com:wandersonchaves/api-so11os.git
-$ cd api-so11os
+$ git clone git@github.com:wandersonchaves/node-objection-restapi.git
+$ cd node-objection-restapi
 $ yarn install
 ```
 
-**Create the .env file**
+**Create the .env.development file**
 
 ```sh
-$ cd api-so11os
-$ cp .env.example .env
-# then update the env vars to the right values. ask a colleague for those.
+$ cd /path/to/api
+$ cp .env.example .env.development
 ```
 
 **Run with docker**
@@ -32,7 +32,7 @@ $ cp .env.example .env
 ```sh
 # Open a new terminal window
 $ docker-compose up --build
-# You only need --build the first time you run or whenver you change
+# You only need --build the first time you run or whenever you change
 # `Dockerfile`, `docker-compose.yml` or change something in package.json like adding/removing a dependencie
 ```
 
@@ -47,13 +47,13 @@ will reload the server for you.
 **Log into the database using CLI**
 
 ```sh
-cd api-so11os
+cd /path/to/api
 
 # run the command `su postgres` within the postgres service named `db` running on docker
 docker-compose exec db su postgres
 
-# open the database and then you can run any query
-psql so11os_dev
+# get into the database and run any query
+psql apidb_dev
 ```
 
 **Log into the dabase using GUI**
@@ -90,7 +90,7 @@ migration file and add the fields of the table
 After done editing the migration file, run:
 
 ```sh
-knex migrate:latest
+yarn migrate
 ```
 
 Remember whenever you need to change the database structure like adding a field to a table,
@@ -106,7 +106,7 @@ apply those changes in the databse
 cp .env.example .env.test
 ```
 
-open `.env.test` and set `DATABASE_URL` to your test database, `so11os_test`
+open `.env.test` and set `DATABASE_URL` to your test database, `apidb_test`
 
 **Run migrations for test environment**
 
