@@ -1,11 +1,10 @@
 const yup = require('yup');
-const omit = require('lodash/omit');
 const User = require('../../../models/user');
 
 async function findUsers() {
   const users = await User.query();
 
-  return users.map((user) => omit(user, ['password']));
+  return users.map(({ password, ...visibleFields }) => visibleFields);
 }
 
 async function createUser({ name, email, password, avatar }) {
