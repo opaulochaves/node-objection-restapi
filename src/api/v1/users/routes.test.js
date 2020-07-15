@@ -33,6 +33,9 @@ describe('v1/users', () => {
 
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(2);
+    response.body.forEach((user) => {
+      expect(user).not.toHaveProperty('password');
+    });
     done();
   });
 
