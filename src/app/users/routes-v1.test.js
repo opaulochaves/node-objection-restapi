@@ -6,7 +6,7 @@ const request = supertest(app);
 
 describe('v1/users', () => {
   beforeEach(() => {
-    return User.query().truncate();
+    return User.query().del();
   });
 
   afterAll(async () => {
