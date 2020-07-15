@@ -9,6 +9,7 @@ const knexfile = require('../knexfile');
 
 const errorHandler = require('./middlewares/error-handler');
 const usersRoutesV1 = require('./app/users/routes-v1');
+const transactionsRoutesV1 = require('./app/transactions/routes-v1');
 
 const knex = Knex(knexfile);
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.disable('x-powered-by');
 
 app.use('/v1/users', usersRoutesV1);
+app.use('/v1/transactions', transactionsRoutesV1);
 
 app.use(errorHandler);
 
