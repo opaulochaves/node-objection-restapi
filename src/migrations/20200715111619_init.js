@@ -27,7 +27,7 @@ exports.up = function (knex) {
       table.enu('account', accounts, { useNative: true, enumName: 'account_type' }).notNullable();
       table.string('note').nullable();
       table.uuid('user_id').notNullable();
-      table.foreign('user_id').references('users.id');
+      table.foreign('user_id').references('users.id').onDelete('CASCADE');
       table.timestamps(false, true);
     });
 };
