@@ -1,6 +1,6 @@
 const supertest = require('supertest');
-const { app, knex } = require('../../../app');
-const User = require('../../../models/user');
+const { app, knex } = require('../../server');
+const User = require('./model');
 
 const request = supertest(app);
 

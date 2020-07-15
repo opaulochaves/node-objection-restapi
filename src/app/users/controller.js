@@ -1,5 +1,5 @@
 const yup = require('yup');
-const User = require('../../../models/user');
+const User = require('./model');
 
 async function findUsers() {
   const users = await User.query();

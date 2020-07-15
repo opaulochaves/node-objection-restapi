@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const knexfile = require('../knexfile');
 
 const errorHandler = require('./middlewares/error-handler');
-const usersRoutes = require('./api/v1/users/routes');
+const usersRoutesV1 = require('./app/users/routes-v1');
 
 const knex = Knex(knexfile);
 
@@ -19,7 +19,7 @@ const app = express();
 app.use(bodyParser.json());
 app.disable('x-powered-by');
 
-app.use('/v1/users', usersRoutes);
+app.use('/v1/users', usersRoutesV1);
 
 app.use(errorHandler);
 
