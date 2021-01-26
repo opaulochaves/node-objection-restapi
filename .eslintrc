@@ -1,6 +1,6 @@
 {
   "extends": ["standard", "prettier", "prettier/standard"],
-  "plugins": ["import", "prettier", "standard"],
+  "plugins": ["import", "prettier"],
   "env": {
     "node": true,
     "es6": true,
